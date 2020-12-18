@@ -1,0 +1,9 @@
+# author: Donald Forbes
+# email: donaldf@vmware.com
+offer-name: tanzu-postgres
+charts:
+- chart: postgres-oper-instance
+  version: 0.1.0
+  scope: namespace
+  offered: true
+  overrideValuesFile: override-values.yaml

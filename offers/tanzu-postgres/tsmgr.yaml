@@ -1,5 +1,5 @@
 # author: Donald Forbes
-# email: donaldf@vmware.com
+# email: <e-mail address>
 offer-name: tanzu-postgres
 charts:
 - chart: postgres-oper-instance

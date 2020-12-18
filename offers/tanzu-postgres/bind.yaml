@@ -1,0 +1,29 @@
+# The bind.yaml is optional.
+# Apps running in Tanzu Application Service gain access to bound service instances through an
+#     environment variable named VCAP_SERVICES consisting of a credentials map.
+# Create a binding template with desired bind format for the chart to be exposed.
+#
+# The example below shows all available information, so you can use that to compose your own template.
+#
+# NOTE: Refer to the "(Optional) Create Binding Template for App Consumption" section in the "Preparing a Service Offering" document
+#     at https://docs.pivotal.io/tanzu-service-manager if you need further information.
+# template: |
+#   {
+#     # ingresses: $.ingresses, # should be configured only if ingresses are available
+#     secrets: $.secrets, # will return all secrets in the namespace where service instance is installed
+#     services: $.services # will return all services in the namespace where service instance is installed
+#   }
+
+template: |
+  local filterfunc(j) = std.length(std.findSubstr("postgres-oper-instance", j.name)) > 0;
+  local s1 = std.filter(filterfunc, $.services);
+  {
+    hostname: s1[0].status.loadBalancer.ingress[0].hostname,
+    name: s1[0].name,
+    jdbcUrl: "jdbc:postgresql://" + self.hostname + ":" + self.port + "/" + self.dbname +"?user=" + self.username + "&password=" + self.password + "&useSSL=false",
+    uri: "postgresql://" + self.username + ":" + self.password + "@" + self.hostname + ":" + self.port + "/" + self.dbname +"?reconnect=true",
+    password: $.secrets[0].data['password'],
+    dbname: $.secrets[0].data['dbname'],
+    port: 5432,
+    username: $.secrets[0].data['username']
+  }

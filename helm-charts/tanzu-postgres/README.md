@@ -1,6 +1,9 @@
 # PostgreSQL Operator
 
-[PostgreSQL](https://www.postgresql.org/)
+Postgres information - [PostgreSQL](https://www.postgresql.org/)
+Tanzu Postgres information - [Tanzu Postgres](https://postgres-kubernetes.docs.pivotal.io/about.html)
+
+Tanzu postgres is deployed by using a kubernetes operator, once deployed a fairly simple yaml deployment can use the operator to create an instance of the postgres database.  TSMGR manages instances via a helm chart so the first step is to create a helm chart which can deploy the instance then create the offer that will result in the service and its plans being available to Cloud Foundry.
 
 This example shows how to use the Tanzu Service Manager to manage the instances for Tanzu Postgres Operator for Kubernetes.
 
@@ -9,7 +12,7 @@ This example shows how to use the Tanzu Service Manager to manage the instances 
 
 1) Please follow the steps to install the Tanzu Postgres Operator for Kubernetes to your cluster from
    [here](http://postgres-kubernetes.docs.pivotal.io/1-0/create-release.html). **NOTE**: the dockerRegistrySecretName
-   in `values.yaml` file must be set to the `registry-secret` value instead of `regsecret`, matching the TSMGR requirement.
+   in `values.yaml` file must be set to the `**registry-secret**` value instead of `regsecret`, matching the TSMGR requirement.
 
 1) Validate your operator is working by running:
     <pre>

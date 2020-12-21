@@ -33,63 +33,29 @@ This example shows how to use the Tanzu Service Manager to manage the instances 
 
 Note - the postgres operator deployes into the default namespace.
 
-## Saving the Offer
-
+## Create the helm chart 
 1) Once the operator is working make the postgres instance helm chart.  This can be created from the content of the tanzu-postgres directory in this repository.
 ```
-cd <path to hem-charts>
-helm package tanzu-postgres
-
-
-1) Untar the `postgres-oper-inst-offer.tgz` file using the command:
-   ```bash
-   tar xvzf postgres-oper-inst-offer.tgz
-   ```
-
-1) The offer will provide the TSMGR files as plans, overrides and bind template. Please verify those files and customize
-   them if you need to set any specifics.
-
-1) From the root level of the new folder where you saved both files, save the offer:
-
-    ```bash
-    $ tsmgr offer save postgres-oper-inst-offer/ postgres-oper-instance-0.1.0.tgz
-    ```
-
-## Enabling CF access
-
-The offer access is not available by default in cf. You can verify that by calling the follow commands.
-Notice that postgres is not available in the marketplace, even though it is listed by service-access (with access=none):
-
-In order to enable the access, use the following command:
-```bash
-$ cf enable-service-access postgres-oper-inst-offer
-Enabling access to all plans of service postgres-oper-inst-offer for all orgs as admin...
-OK
-
-$ cf marketplace
-Getting services from marketplace in org system / space dev as admin...
-OK
-
-service                    plans           description                                                                         broker
-postgres-oper-inst-offer   default, huge   A Helm chart for creating the Tanzu Postgress Operator for Kubernetes instance.     tanzu-service-manager
+$ cd <path to hem-charts>
+$ helm package tanzu-postgres
 ```
+This will create a file in your working directory called tanzu-postgres-<Version>.tgz.
+   
+This package can be deployed to your kubernetes cluster where the operator is running to test the creation of a postgres instance.
 
-## Creating an instance
-
-After enabling access to the offer in cf, it's possible to provision a new instance.
-
-```bash
-$ cf create-service postgres-oper-inst-offer default pg-instance
-Creating service instance pg-instance in org system / space dev as admin...
-OK
-
-Create in progress. Use 'cf services' or 'cf service pg-instance' to check operation status.
-
-$ cf services
-Getting services in org system / space dev as admin...
-
-name             service                    plan      bound apps   last operation     broker                  upgrade available
-pg-instance      postgres-oper-inst-offer   default                create succeeded   tanzu-service-manager   no
 ```
+$ kubectl config set-context --current --namespace=default
+Context "services-admin@services" modified.
+$ kubectl get pods
+NAME                                READY   STATUS    RESTARTS   AGE
+postgres-operator-b787bfd69-2mkm2   1/1     Running   0          3d1h
 
+$ helm install tanzu-postgres tanzu-postgres-0.1.0.tgz
+NAME: tanzu-postgres
+LAST DEPLOYED: Mon Dec 21 13:59:06 2020
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+```
 

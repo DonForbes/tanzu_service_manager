@@ -23,7 +23,7 @@ Tanzu Service Manager does not manage yaml files directly itself but manages hel
 <b>$ cd <Base Directory of the tanzu_service_manager></b>
 <b>$ tsmgr offer save offers/tanzu-postgres ./helm-charts/tanzu-postgres-0.1.0.tgz</b>
 Offer saved [tanzu-postgres]
-<b>$ tsmgr offer list<b>
+<b>$ tsmgr offer list</b>
 OFFER           	INCLUDED CHARTS        	PLANS
 tanzu-postgres  	[*tanzu-postgres:0.1.0]	[small large]
 bitnami-postgres	[*postgresql:10.1.4]   	[small medium]

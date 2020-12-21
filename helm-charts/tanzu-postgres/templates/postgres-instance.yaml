@@ -1,0 +1,17 @@
+apiVersion: sql.tanzu.vmware.com/v1
+kind: Postgres
+metadata:
+  name: {{ .Chart.Name }}
+spec:
+  memory: {{ .Values.memory }}
+  cpu: "{{- .Values.cpu -}}"
+  storageClassName: {{ .Values.storageClassName }}
+  storageSize: {{ .Values.storageSize }}
+  pgConfig:
+    dbname: {{ .Values.pgConfig.dbname }}
+    username: {{ .Values.pgConfig.username }}
+  serviceType: {{ .Values.serviceType }}
+  highAvailability:
+    enabled: {{ .Values.highAvailability.enabled }}
+  backupLocationSecret:
+    name: {{ .Values.backupLocationSecret.name }}

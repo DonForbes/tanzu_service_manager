@@ -4,26 +4,6 @@
 
 This example shows how to use the Tanzu Service Manager to manage the instances for Tanzu Postgres Operator for Kubernetes.
 
-## Introduction
-
-This example includes a Helm chart for the Tanzu Postgres Operator Instance.
-
-## Prerequisites
-
-- TAS environment with Tanzu Service Manager installed and configured.
-- Connection setup for the `tsmgr` CLI to properly target an environment
-
-```
-export TSMGR_TARGET=http://<change_by_your_tsmgr_server>:<change_by_your_tsmgr_server_port>
-export TSMGR_TOKEN=<change_by_your_tsmgr_kubernetes_token>
-export TSMGR_INSECURE=true # if using a lab environment
-```
-
-- Kubernetes [cluster registered with TSMGR](https://docs.pivotal.io/tanzu-service-manager/managing-clusters.html) and set as default
-```bash
-tsmgr cluster register my-cluster-name my-cluster-creds-file.yaml
-tsmgr cluster set-default my-cluster-name
-```
 
 ## Installing the Tanzu Postgres Operator for Kubernetes
 
@@ -104,10 +84,4 @@ name             service                    plan      bound apps   last operatio
 pg-instance      postgres-oper-inst-offer   default                create succeeded   tanzu-service-manager   no
 ```
 
-## External References
 
-For more details and customizations for Postgres chart, see https://github.com/helm/charts/tree/master/stable/postgres
-
-For more details on tsmgr usage see https://docs.pivotal.io/tanzu-service-manager/using.html
-
-For other Tanzu documents see https://docs.pivotal.io/

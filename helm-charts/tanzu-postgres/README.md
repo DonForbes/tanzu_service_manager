@@ -12,7 +12,7 @@ This example shows how to use the Tanzu Service Manager to manage the instances 
 
 1) Please follow the steps to install the Tanzu Postgres Operator for Kubernetes to your cluster from
    [here](http://postgres-kubernetes.docs.pivotal.io/1-0/create-release.html). **NOTE**: the dockerRegistrySecretName
-   in `values.yaml` file must be set to the <pre><b>registry-secret</b></pre> value instead of `regsecret`, matching the TSMGR requirement.
+   in `values.yaml` file must be set to the **`registry-secret`** value instead of `regsecret`, matching the TSMGR requirement.
 
 1) Validate your operator is working by running:
     <pre>

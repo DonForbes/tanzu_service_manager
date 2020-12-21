@@ -107,8 +107,6 @@ pg-instance      tanzu-postgres.            default                create succee
 
 ## External References
 
-For more details and customizations for Postgres chart, see https://github.com/helm/charts/tree/master/stable/postgres
-
 For more details on tsmgr usage see https://docs.pivotal.io/tanzu-service-manager/using.html
 
 For other Tanzu documents see https://docs.pivotal.io/

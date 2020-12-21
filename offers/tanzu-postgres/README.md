@@ -23,12 +23,12 @@ Tanzu Service Manager does not manage yaml files directly itself but manages hel
 <b>$ cd <Base Directory of the tanzu_service_manager></b>
 <b>$ tsmgr offer save offers/tanzu-postgres ./helm-charts/tanzu-postgres-0.1.0.tgz</b>
 Offer saved [tanzu-postgres]
-$ tsmgr offer list
+<b>$ tsmgr offer list<b>
 OFFER           	INCLUDED CHARTS        	PLANS
 tanzu-postgres  	[*tanzu-postgres:0.1.0]	[small large]
 bitnami-postgres	[*postgresql:10.1.4]   	[small medium]
 
-$ cf login -u admin -p <PASSWORD>
+<b>$ cf login -u admin -p <PASSWORD></b>
 API endpoint: https://api.sys.tas.donaldforbes.com
 
 Authenticating...
@@ -38,7 +38,7 @@ Select an org:
 1. donald
 2. system
 
-Org (enter to skip): 1
+Org (enter to skip):<b> 1</b>
 Targeted org donald.
 
 Targeted space dev.
@@ -49,7 +49,7 @@ user:           admin
 org:            donald
 space:          dev
 
-$ cf service-access
+<b>$ cf service-access</b>
 Getting service access as admin...
 
 broker: tanzusmgr
@@ -61,7 +61,7 @@ broker: tanzusmgr
 Enabling access to all plans of service offering tanzu-postgres for all orgs as admin...
 OK
 
-$ cf service-access
+<b>$ cf service-access</b>
 Getting service access as admin...
 
 broker: tanzusmgr
@@ -71,7 +71,7 @@ broker: tanzusmgr
    tanzu-postgres     large    all
    tanzu-postgres     small    all
    
-$ cf login -u donald -p donald
+<b>$ cf login -u donald -p donald</b>
 API endpoint: https://api.sys.tas.donaldforbes.com
 
 
@@ -88,7 +88,7 @@ user:           donald
 org:            donald
 space:          dev
 
-$ cf marketplace
+<b>$ cf marketplace</b>
 Getting all service offerings from marketplace in org donald / space dev as donald...
 
 offering           plans           description                                                                                                                                     broker
@@ -97,17 +97,15 @@ tanzu-postgres     small, large    A Helm chart for creating the Tanzu Postgress
 
 TIP: Use 'cf marketplace -e SERVICE_OFFERING' to view descriptions of individual plans of a given service offering.
 
-$ cf create-service tanzu-postgres small my-postgres
+<b>$ cf create-service tanzu-postgres small my-postgres</b>
 Creating service instance my-postgres in org donald / space dev as donald...
 OK
 
 Create in progress. Use 'cf services' or 'cf service my-postgres' to check operation status.
 
-$ kubectl config set-context --namespace=tsmgr-b50074c0-34f9-4858-8dd2-26b34bfa1a0b
-error: you must specify a non-empty context name or --current
-./tmp/tanzu_service_manager$ kubectl config set-context --namespace=tsmgr-b50074c0-34f9-4858-8dd2-26b34bfa1a0b --current
+<b>$ kubectl config set-context --namespace=tsmgr-b50074c0-34f9-4858-8dd2-26b34bfa1a0b --current</b>
 Context "services-admin@services" modified.
-./tmp/tanzu_service_manager$ kubectl get all
+<b>$ kubectl get all</b>
 NAME                           READY   STATUS    RESTARTS   AGE
 pod/tanzu-postgres-0           1/1     Running   0          66s
 pod/tanzu-postgres-monitor-0   1/1     Running   0          66s
@@ -123,12 +121,12 @@ statefulset.apps/tanzu-postgres-monitor   1/1     66s
 NAME                                           STATUS    AGE
 postgres.sql.tanzu.vmware.com/tanzu-postgres   Running   66s
 
-$ cf s
+<b>$ cf s</b>
 Getting services in org donald / space dev as donald...
 
 name          service          plan    bound apps   last operation     broker      upgrade available
 my-postgres   tanzu-postgres   small                create succeeded   tanzusmgr   no
-$ cf bind-service spring-music my-postgres
+<b>$ cf bind-service spring-music my-postgres</b>
 Binding service my-postgres to app spring-music in org donald / space dev as donald...
 OK
 

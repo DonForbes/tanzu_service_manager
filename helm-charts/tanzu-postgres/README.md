@@ -31,10 +31,15 @@ This example shows how to use the Tanzu Service Manager to manage the instances 
     replicaset.apps/postgres-operator-7456f6b775   1         1         1       24h
     </pre>
 
+Note - the postgres operator deployes into the default namespace.
+
 ## Saving the Offer
 
-1) Once the operator is working, download the [postgres-oper-instance-0.1.0.tgz](./postgres-oper-instance-0.1.0.tgz)
-   helm chart and [postgres-oper-inst-offer.tgz](./postgres-oper-inst-offer.tgz) TSMGR offer files to a new empty folder.
+1) Once the operator is working make the postgres instance helm chart.  This can be created from the content of the tanzu-postgres directory in this repository.
+```
+cd <path to hem-charts>
+helm package tanzu-postgres
+
 
 1) Untar the `postgres-oper-inst-offer.tgz` file using the command:
    ```bash

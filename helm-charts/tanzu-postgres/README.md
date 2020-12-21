@@ -57,5 +57,34 @@ NAMESPACE: default
 STATUS: deployed
 REVISION: 1
 TEST SUITE: None
+
+$ kubectl get all
+NAME                                    READY   STATUS    RESTARTS   AGE
+pod/postgres-operator-b787bfd69-2mkm2   1/1     Running   0          3d2h
+pod/tanzu-postgres-0                    1/1     Running   0          2m17s
+pod/tanzu-postgres-monitor-0            1/1     Running   0          2m17s
+
+NAME                                        TYPE           CLUSTER-IP       EXTERNAL-IP                                                              PORT(S)          AGE
+service/kubernetes                          ClusterIP      100.64.0.1       <none>                                                                   443/TCP          12d
+service/postgres-operator-webhook-service   ClusterIP      100.69.213.31    <none>                                                                   443/TCP          3d2h
+service/tanzu-postgres                      LoadBalancer   100.67.243.156   ad92b2df2cb4f4bed971a666d53a13c7-543759362.eu-west-2.elb.amazonaws.com   5432:32423/TCP   2m17s
+service/tanzu-postgres-agent                ClusterIP      None             <none>                                                                   <none>           2m17s
+
+NAME                                READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/postgres-operator   1/1     1            1           3d2h
+
+NAME                                          DESIRED   CURRENT   READY   AGE
+replicaset.apps/postgres-operator-b787bfd69   1         1         1       3d2h
+
+NAME                                      READY   AGE
+statefulset.apps/tanzu-postgres           1/1     2m17s
+statefulset.apps/tanzu-postgres-monitor   1/1     2m17s
+
+NAME                                           STATUS    AGE
+postgres.sql.tanzu.vmware.com/tanzu-postgres   Running   2m17s
+
 ```
 
+This shows that the pods for the postgres instance have started successfully (tanzu-postgres-monitor-0 and tanzu-postgres-0) and the service has been exposed as a load balancer as defined in the values.yaml.
+
+Note - it is likely that to test this helm chart out it will be necessary to adjust the storageClass in the values.yaml file to ensure that it maps to a storageClass appropriate for your Kubernetes cluster.

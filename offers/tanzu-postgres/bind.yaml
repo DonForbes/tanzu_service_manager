@@ -15,7 +15,7 @@
 #   }
 
 template: |
-  local filterfunc(j) = std.length(std.findSubstr("postgres-oper-instance", j.name)) > 0;
+  local filterfunc(j) = std.length(std.findSubstr("tanzu-postgres", j.name)) > 0;
   local s1 = std.filter(filterfunc, $.services);
   {
     hostname: s1[0].status.loadBalancer.ingress[0].hostname,

@@ -1,0 +1,10 @@
+apiVersion: v2
+appVersion: 1.16.0
+description: A Helm chart for creating the Tanzu Postgress instance for Kubernetes
+  instance.
+maintainers:
+- email: donaldf@vmware.com
+  name: Donald Forbes
+name: tanzu-postgres
+type: application
+version: 0.1.0

@@ -72,7 +72,8 @@ tanzu-postgres  	[*postgres-oper-instance:0.1.0]	[default huge]
 The offer access is not available by default in cf. You can verify that by calling the follow commands.
 Notice that postgres is not available in the marketplace, even though it is listed by service-access (with access=none):
 
-In order to enable the access, use the following command:
+In order to enable the access we need to enable the service to show up in the marketplace for the organisation.  Below is an example using a offer that we called tanzu-postgres :
+
 ```bash
 $ cf enable-service-access tanzu-postgres
 Enabling access to all plans of service tanzu-postgres for all orgs as admin...

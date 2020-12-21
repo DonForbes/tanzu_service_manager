@@ -20,8 +20,8 @@ Tanzu Service Manager does not manage yaml files directly itself but manages hel
 8. Unbind the service and delete
 
 <pre>
-$ cd <Base Directory of the tanzu_service_manager>
-$ tsmgr offer save offers/tanzu-postgres ./helm-charts/tanzu-postgres-0.1.0.tgz
+<b>$ cd <Base Directory of the tanzu_service_manager></b>
+<b>$ tsmgr offer save offers/tanzu-postgres ./helm-charts/tanzu-postgres-0.1.0.tgz</b>
 Offer saved [tanzu-postgres]
 $ tsmgr offer list
 OFFER           	INCLUDED CHARTS        	PLANS

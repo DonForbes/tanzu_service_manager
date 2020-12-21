@@ -1,0 +1,14 @@
+nameOverride: ""
+fullnameOverride: ""
+memory: 800Mi
+cpu: "0.8"
+storageClassName: standard
+storageSize: 100M
+pgConfig:
+  dbname: pg-instance
+  username: pgadmin
+serviceType: LoadBalancer
+highAvailability:
+  enabled: false
+backupLocationSecret:
+  name:

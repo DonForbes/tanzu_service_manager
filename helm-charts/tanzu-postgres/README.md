@@ -5,7 +5,7 @@ Tanzu Postgres information - [Tanzu Postgres](https://postgres-kubernetes.docs.p
 
 Tanzu postgres is deployed by using a kubernetes operator, once deployed a fairly simple yaml deployment can use the operator to create an instance of the postgres database.  TSMGR manages instances via a helm chart so the first step is to create a helm chart which can deploy the instance then create the offer that will result in the service and its plans being available to Cloud Foundry.
 
-This example shows how to use the Tanzu Service Manager to manage the instances for Tanzu Postgres Operator for Kubernetes.
+This example goes through the installation of the Tanzu Postgres operator and then creating a helm chart to create an instance of the Postgres database.
 
 
 ## Installing the Tanzu Postgres Operator for Kubernetes

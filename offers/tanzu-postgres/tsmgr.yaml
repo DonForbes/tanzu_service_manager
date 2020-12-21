@@ -2,7 +2,7 @@
 # email: <e-mail address>
 offer-name: tanzu-postgres
 charts:
-- chart: postgres-oper-instance
+- chart: tanzu-postgres
   version: 0.1.0
   scope: namespace
   offered: true
